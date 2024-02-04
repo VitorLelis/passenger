@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
+from response import talk
 
 #LOAD THE TOKEN
 load_dotenv()
@@ -18,7 +19,7 @@ async def send_message(message: Message, user_message: str) -> None:
         return
     
     try:
-        response = "I'm Alive!"
+        response = talk(str(message.content))
         await message.channel.send(response)
     
     except Exception as e:

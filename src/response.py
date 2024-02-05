@@ -8,20 +8,24 @@ def generate(message: str) -> str:
              '-digits': digits, 
              '-symbols': '!@#$%^()'}
     
-    chars = ""
+    chars = ''
+    
+    sizeregex = compile(r'\!(\d+)')
+    charregex = compile(r'(\-lower|\-upper|\-digits|\-symbols)')
 
-    for k,v in flags.items():
-        if k in message:
-            chars += v
-    if chars == "":
-        chars = ascii_lowercase + ascii_uppercase + digits + flags['-symbols']
-
-    regex = compile(r'\!(\d+)')
     try:
-        value = regex.search(message)[1]
+        value = sizeregex.search(message)[1]
     except:
         value = 16
     size = int(value)
+
+    options = charregex.findall(message)
+
+    if options:
+        for o in options:
+            chars += flags[o]
+    else:
+        chars = chars.join(list(flags.values()))
 
     return ''.join(choice(chars) for i in range(size)) 
 

@@ -14,10 +14,9 @@ def generate(message: str) -> str:
     charregex = compile(r'(\-lower|\-upper|\-digits|\-symbols)')
 
     try:
-        value = sizeregex.search(message)[1]
+        size = int(sizeregex.search(message)[1])
     except:
-        value = 16
-    size = int(value)
+        size = 16
 
     options = charregex.findall(message)
 

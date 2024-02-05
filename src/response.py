@@ -74,6 +74,19 @@ def analyze(message: str) -> str:
 
 def talk(message: str) -> str:
     genrgx = compile(r'(\!\d+|\-lower|\-upper|\-digits|\-symbols)')
+
+    help = '''Here is what I can do:
+    **GENERATE PASSWORDS**:
+        Use `!NUMBER` to determine the length of the password and apply some flags:
+            `-lower` to Lowercase
+            `-upper` to Uppercase
+            `-digits`  to Digits
+            `-symbols` to !@#$%^()
+        No flags will use all of them by default
+        No `!NUMBER` will apply an length of 16 by default
+    **ANALYZE PASSWORDS**:
+        Any sequence of characters starting with `=>` will be analyzed as an password
+    '''
     
     if genrgx.search(message):
         return generate(message)
@@ -81,5 +94,7 @@ def talk(message: str) -> str:
         return analyze(message)
     elif message == 'Hello there':
         return '_General Kenobi_'
+    elif message.startswith('?help'):
+        return help
     else:
-        return 'Repeat please'
+        return "Repeat please or type `?help` to learn what I can do"

@@ -8,7 +8,7 @@ logging.basicConfig(filename='passenger.log', level=logging.INFO, format='%(asct
 
 #LOAD THE TOKEN
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+__TOKEN = os.getenv('DISCORD_TOKEN')
 
 #BOT SETUP
 intents = Intents.default()
@@ -48,7 +48,7 @@ async def on_message(message: Message) -> None:
 
 #MAIN
 def main() -> None:
-    client.run(token=TOKEN)
+    client.run(token=__TOKEN)
 
 if __name__ == '__main__':
     main()

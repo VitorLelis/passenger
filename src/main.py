@@ -2,6 +2,9 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 from response import talk
+import logging
+
+logging.basicConfig(filename='passenger.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
 #LOAD THE TOKEN
 load_dotenv()
@@ -15,7 +18,7 @@ client = Client(intents=intents)
 #LET'S TALK
 async def send_message(message: Message, user_message: str) -> None:
     if not user_message:
-        print("NO MESSAGE")
+        logging.info("NO MESSAGE")
         return
     
     try:
@@ -23,12 +26,12 @@ async def send_message(message: Message, user_message: str) -> None:
         await message.channel.send(response)
     
     except Exception as e:
-        print(e)
+        logging.info(e)
 
 #BOT STARTUP
 @client.event
 async def on_ready() -> None:
-    print(f'{client.user} is up!')
+    logging.info(f'{client.user} is up!')
 
 #MESSAGES HANDLING
 @client.event
@@ -40,7 +43,7 @@ async def on_message(message: Message) -> None:
     user_message = message.content
     channel = str(message.channel)
 
-    print(f'[{channel}] {username}: {user_message}')
+    logging.info(f'[{channel}] {username}: {user_message}')
     await send_message(message, user_message)
 
 #MAIN

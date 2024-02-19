@@ -3,6 +3,18 @@ from string import ascii_lowercase, ascii_uppercase, digits
 from re import compile,sub
 
 def generate(message: str) -> str:
+    """
+    This function is designed to generate a random password based on provided flags. 
+    It utilizes two regular expressions to identify the flags:
+
+    1. Password size;
+    2. Characters used.
+
+    If the flags are not specified, default values are applied:
+
+    1. Size of 16
+    2. All characters
+    """
     flags = {'-lower': ascii_lowercase, 
              '-upper': ascii_uppercase, 
              '-digits': digits, 
@@ -29,6 +41,9 @@ def generate(message: str) -> str:
     return ''.join(choice(chars) for i in range(size)) 
 
 def char_score(message: str) -> int:
+    """
+    Responsible for assessing the strength of a password by analyzing the types of characters present.
+    """
     lower = compile(r'[a-z]')
     upper = compile(r'[A-Z]')
     digits = compile(r'[0-9]')
@@ -48,6 +63,13 @@ def char_score(message: str) -> int:
     return score
 
 def analyze(message: str) -> str:
+    """
+    This function computes the overall strength of a password using the following steps:
+
+    1. Utilizes 'char_score' to identify characters and calculate their individual strength.
+    2. Assesses the length, categorizing it as weak if it is less than 6 characters.
+    3. Searches the strength dictionary for the result if the length is 6 or greater, returning the corresponding strength value.
+    """
     strength = {
         0 : 13*[0],
         1 : 2*[0] + 6*[1] + 5*[2],
@@ -73,6 +95,9 @@ def analyze(message: str) -> str:
     return 'Your password is '+ answers[result]
 
 def talk(message: str) -> str:
+    """
+    This function is tasked with processing the incoming message and generating the appropriate response.
+    """
     genrgx = compile(r'(\!\d+|\-lower|\-upper|\-digits|\-symbols)')
 
     help = '''Here is what I can do:

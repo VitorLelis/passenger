@@ -15,8 +15,12 @@ intents = Intents.default()
 intents.message_content = True
 client = Client(intents=intents)
 
-#LET'S TALK
 async def send_message(message: Message, user_message: str) -> None:
+    """
+    Tasked with generating appropriate responses based on the provided message. 
+    If no message is received or an exception occurs, the system will log the incident. 
+    Otherwise, it will invoke the 'talk' function to produce a suitable response for the user. 
+    """
     if not user_message:
         logging.info("NO MESSAGE")
         return
@@ -28,14 +32,17 @@ async def send_message(message: Message, user_message: str) -> None:
     except Exception as e:
         logging.info(e)
 
-#BOT STARTUP
 @client.event
 async def on_ready() -> None:
+    """Log the Bot's status upon initialization."""
     logging.info(f'{client.user} is up!')
 
-#MESSAGES HANDLING
 @client.event
 async def on_message(message: Message) -> None:
+    """
+    This function ensures that the bot doesn't respond to its own messages.
+    Facilitates the proper handling of incoming messages.
+    """
     if message.author == client.user:
         return
     
@@ -46,7 +53,6 @@ async def on_message(message: Message) -> None:
     logging.info(f'[{channel}] {username}: {user_message}')
     await send_message(message, user_message)
 
-#MAIN
 def main() -> None:
     client.run(token=__TOKEN)
 

@@ -4,6 +4,7 @@ from discord import Intents, Client, Message
 from response import talk
 import logging
 
+#LOG CONFIG
 logging.basicConfig(filename='passenger.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
 #LOAD THE TOKEN

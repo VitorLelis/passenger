@@ -80,13 +80,14 @@ def analyze(message: str) -> str:
 
     msg = sub('=>','', message)
 
-    score = char_score(msg)
-
     size = len(msg)
 
-    score = 0 if size < 6 else char_score(msg)
-
-    size_param = min(size-6, 12)
+    if size >= 6:
+        score = char_score(msg)
+        size_param = min(size-6,12)
+    else:
+        score = 0
+        size_param = 0
 
     result = strength[score][size_param]
 
@@ -113,13 +114,13 @@ def talk(message: str) -> str:
         Any sequence of characters starting with `=>` will be analyzed as an password
     '''
     
-    if genrgx.search(message):
-        return generate(message)
+    if message.startswith('?help'):
+        return help
     elif message.startswith('=>'):
         return analyze(message)
+    elif genrgx.search(message):
+        return generate(message)
     elif message == 'Hello there':
         return '_General Kenobi_'
-    elif message.startswith('?help'):
-        return help
     else:
         return "Repeat please or type `?help` to learn what I can do"

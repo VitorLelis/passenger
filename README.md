@@ -21,3 +21,17 @@ To use `passenger` on your bot, make sure to follow these steps:
 At the root directory run the following command:
 
     python3 src/main.py
+
+## Docker
+
+To build and run an container deidcated to the bot:
+
+    docker compose up -d --build 
+
+After that to stop it use:
+    
+    docker stop passenger
+
+To restart after build:
+
+    docker restart passenger

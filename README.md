@@ -24,7 +24,7 @@ At the root directory run the following command:
 
 ## Docker
 
-To build and run an container deidcated to the bot:
+To build and run an container dedicated to the bot:
 
     docker compose up -d --build 
 

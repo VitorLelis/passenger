@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module response</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>response</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/lelis_vitor/Documentos/my-git/passenger/src/response.py">/home/lelis_vitor/Documentos/my-git/passenger/src/response.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-analyze"><strong>analyze</strong></a>(message: str) -&gt; str</dt><dd><tt>This&nbsp;function&nbsp;computes&nbsp;the&nbsp;overall&nbsp;strength&nbsp;of&nbsp;a&nbsp;password&nbsp;using&nbsp;the&nbsp;following&nbsp;steps:<br>
+&nbsp;<br>
+1.&nbsp;Utilizes&nbsp;'char_score'&nbsp;to&nbsp;identify&nbsp;characters&nbsp;and&nbsp;calculate&nbsp;their&nbsp;individual&nbsp;strength.<br>
+2.&nbsp;Assesses&nbsp;the&nbsp;length,&nbsp;categorizing&nbsp;it&nbsp;as&nbsp;weak&nbsp;if&nbsp;it&nbsp;is&nbsp;less&nbsp;than&nbsp;6&nbsp;characters.<br>
+3.&nbsp;Searches&nbsp;the&nbsp;strength&nbsp;dictionary&nbsp;for&nbsp;the&nbsp;result&nbsp;if&nbsp;the&nbsp;length&nbsp;is&nbsp;6&nbsp;or&nbsp;greater,&nbsp;returning&nbsp;the&nbsp;corresponding&nbsp;strength&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-char_score"><strong>char_score</strong></a>(message: str) -&gt; int</dt><dd><tt>Responsible&nbsp;for&nbsp;assessing&nbsp;the&nbsp;strength&nbsp;of&nbsp;a&nbsp;password&nbsp;by&nbsp;analyzing&nbsp;the&nbsp;types&nbsp;of&nbsp;characters&nbsp;present.</tt></dd></dl>
+ <dl><dt><a name="-generate"><strong>generate</strong></a>(message: str) -&gt; str</dt><dd><tt>This&nbsp;function&nbsp;is&nbsp;designed&nbsp;to&nbsp;generate&nbsp;a&nbsp;random&nbsp;password&nbsp;based&nbsp;on&nbsp;provided&nbsp;flags.&nbsp;<br>
+It&nbsp;utilizes&nbsp;two&nbsp;regular&nbsp;expressions&nbsp;to&nbsp;identify&nbsp;the&nbsp;flags:<br>
+&nbsp;<br>
+1.&nbsp;Password&nbsp;size;<br>
+2.&nbsp;Characters&nbsp;used.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;flags&nbsp;are&nbsp;not&nbsp;specified,&nbsp;default&nbsp;values&nbsp;are&nbsp;applied:<br>
+&nbsp;<br>
+1.&nbsp;Size&nbsp;of&nbsp;16<br>
+2.&nbsp;All&nbsp;characters</tt></dd></dl>
+ <dl><dt><a name="-talk"><strong>talk</strong></a>(message: str) -&gt; str</dt><dd><tt>This&nbsp;function&nbsp;is&nbsp;tasked&nbsp;with&nbsp;processing&nbsp;the&nbsp;incoming&nbsp;message&nbsp;and&nbsp;generating&nbsp;the&nbsp;appropriate&nbsp;response.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ascii_lowercase</strong> = 'abcdefghijklmnopqrstuvwxyz'<br>
+<strong>ascii_uppercase</strong> = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'<br>
+<strong>digits</strong> = '0123456789'</td></tr></table>
+</body></html>
